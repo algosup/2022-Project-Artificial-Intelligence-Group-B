@@ -16,7 +16,7 @@ The aim of this project is to listen conversations during project time and detec
 
 This will be a device to make sure that the students talk in English during project time.  A colour will be emitted following the language spoken (green for good English, red for French, and blue for other language)
 
-#### Team
+### Team
 
 The team will be composed of:
 Clémentine CUREL as Project Manager
@@ -25,7 +25,6 @@ Max BERNARD
 Léo CHARTIER
 Thomas PLANCHARD
 Quentin CLEMENT
-
 
 ## 2. Definitions of terms
 
@@ -37,6 +36,13 @@ Quentin CLEMENT
 |Hardware| The physical and electronic parts of a computer or other piece of equipment, rather than its software.|
 
 ## 3. In-depth
+
+Some more explanations on the project :
+
+- We want to detect french and english whatever the level of the user
+- The colour shall change depending on the language the degree of  mastery of the user.
+
+<img src="./pictures/Color chart.png">
 
 ## 4. Data collection
 

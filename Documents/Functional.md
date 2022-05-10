@@ -1,12 +1,13 @@
 # Functional Specification
 
-- [1. Introduction](#1-introduction)
-  - [Team](#team)
-- [2. Definitions of terms](#2-definitions-of-terms)
-- [3. In-depth](#3-in-depth)
-- [4. Data collection](#4-data-collection)
-- [5. Privacy and confidentiality](#5-privacy-and-confidentiality)
-- [6. Use cases](#6-use-cases)
+- [Functional Specification](#functional-specification)
+  - [1. Introduction](#1-introduction)
+    - [Team](#team)
+  - [2. Definitions of terms](#2-definitions-of-terms)
+  - [3. In-depth](#3-in-depth)
+  - [4. Data collection](#4-data-collection)
+  - [5. Privacy and confidentiality](#5-privacy-and-confidentiality)
+  - [6. Use cases](#6-use-cases)
 
 ---
 
@@ -49,8 +50,8 @@ Some more explanations on the project :
 
 ## 4. Data collection
 
-To train an AI, we need a lot of data. The data need to come from a reputable source. It also needs to be labeled.
-To consider as much variation as possible, we also need different accents.
+To collect data we have thought about two different ways. The first way is to collect many records of all the students in ALGOSUP just by putting a microphone in the room. The advantage of this way of collecting is that the data are more consistent with the usefulness of the device. On the other hand, there are many disadvantages like the reliability of the data because we need to listen to all the recordings to be sure that students are speaking French when we need it and English when we need it.
+To solve this problem we can also record students in the English class to be sure that they speak in English and record them during the meal to make sure they speak in French. . The second way is to use data from the internet with a bank of data. The advantage is the number of data that we can have very quickly and there are no real disadvantages.
 
 ## 5. Privacy and confidentiality
 

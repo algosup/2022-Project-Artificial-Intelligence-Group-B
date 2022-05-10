@@ -10,6 +10,23 @@
 
 ## 1. Introduction
 
+To put you in the context, ALGOSUP is a school where all our classes are in English, but the students still talk in French during their project time.  
+
+The aim of this project is to listen conversations during project time and detect when they talk in English or French. The students will not interact with the device.
+
+This will be a device to make sure that the students talk in English during project time.  A colour will be emitted following the language spoken (green for good English, red for French, and blue for other language)
+
+#### Team
+
+The team will be composed of:
+Clémentine CUREL as Project Manager
+Louis DE LAVENNE DE CHOULOT DE CHABAUD-LA-TOUR as Tech Leader
+Max BERNARD
+Léo CHARTIER
+Thomas PLANCHARD
+Quentin CLEMENT
+
+
 ## 2. Definitions of terms
 
 |  Terms| Definition  |

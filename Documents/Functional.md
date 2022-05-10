@@ -22,13 +22,13 @@ This will be a device to make sure that the students talk in English during proj
 ### Team
 
 The team will be composed of:
+
 - Clémentine CUREL as Project Manager
 - Louis DE LAVENNE DE CHOULOT DE CHABAUD-LA-TOUR as Tech Leader
 - Max BERNARD
 - Léo CHARTIER
 - Thomas PLANCHARD
 - Quentin CLEMENT
-
 
 ## 2. Definitions of terms
 
@@ -43,24 +43,25 @@ The team will be composed of:
 
 Some more explanations on the project :
 
-- We want to detect french and English whatever the level of the user
-- The color shall change depending on the language and the degree of mastery of the user.
+- We want to detect French and English whatever the level of the user
+- The colour shall change depending on the language the degree of  mastery of the user.
+- red is french, green is english, blue is an unrecognized language and the yellow graduation depends on the accent.
 
 <img src="./pictures/Color chart.png">
 
 ## 4. Data collection
 
-To collect data we have thought about two different ways. The first way is to collect many records of all the students in ALGOSUP just by putting a microphone in the room. The advantage of this way of collecting is that the data are more consistent with the usefulness of the device. 
+To collect data we have thought about two different ways. The first way is to collect many records of all the students in ALGOSUP just by putting a microphone in the room. The advantage of this way of collecting is that the data are more consistent with the usefulness of the device.
 
 On the other hand, there are many disadvantages like the reliability of the data because we need to listen to all the recordings to be sure that students are speaking French when we need it and English when we need it.
 
-To solve this problem we can also record students in the English class to be sure that they speak in English and record them during the meal to make sure they speak in French. 
+To solve this problem we can also record students in the English class to be sure that they speak in English and record them during the meal to make sure they speak in French.
 
 The second way is to use data from the internet with a bank of data. The advantage is the number of data that we can have very quickly and there are no real disadvantages.
 
 ## 5. Privacy and confidentiality
 
-We think that it is not necessary to record and keep the records in a cloud to detect a language. Thanks to this we will not need to store the live conversation, the device will detect the language and delete the record after it. 
+We think that it is not necessary to record and keep the records in a cloud to detect a language. Thanks to this we will not need to store the live conversation, the device will detect the language and delete the record after it.
 
 We may encrypt some information to ensure security and confidentiality. We don’t want to connect it to the internet to save the data. It will also make the device difficult to hack because to hack it we will need to have a physics contact with the device.
 

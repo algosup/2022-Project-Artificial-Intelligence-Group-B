@@ -1,11 +1,12 @@
 # Functional Specification
 
-- [1. Introduction](#1-introduction)
-- [2. Definitions of terms](#2-definitions-of-terms)
-- [3. In-depth](#3-in-depth)
-- [4. Data collection](#4-data-collection)
-- [5. Privacy and confidentiality](#5-privacy-and-confidentiality)
-- [6. Use cases](#6-use-cases)
+- [Functional Specification](#functional-specification)
+  - [1. Introduction](#1-introduction)
+  - [2. Definitions of terms](#2-definitions-of-terms)
+  - [3. In-depth](#3-in-depth)
+  - [4. Data collection](#4-data-collection)
+  - [5. Privacy and confidentiality](#5-privacy-and-confidentiality)
+  - [6. Use cases](#6-use-cases)
 
 ## 1. Introduction
 
@@ -21,6 +22,9 @@
 ## 3. In-depth
 
 ## 4. Data collection
+
+To train an AI, we need a lot of data. The data need to come from a reputable source. It also needs to be labeled.
+To consider as much variation as possible, we also need different accents.
 
 ## 5. Privacy and confidentiality
 

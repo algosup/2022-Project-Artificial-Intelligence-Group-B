@@ -11,6 +11,13 @@
 
 ## 2. Definitions of terms
 
+|  Terms| Definition  |
+|--|--|
+| Machine learning| Machine learning is a subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behaviour. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI. |
+|AI| Artificial intelligence (AI) is the ability of a computer or a robot controlled by a computer to do tasks that are usually done by humans because they require human intelligence and discernment. |
+|Deep learning| Deep Learning, is the concept of computers simulating the process a human brain takes to analyse, think and learn. The deep learning process involves something called a neural network as a part of the thinking process for an AI. It takes an enormous amount of data to train deep learning and a considerably powerful computing device for such computation methods.|
+|Hardware| The physical and electronic parts of a computer or other piece of equipment, rather than its software.|
+
 ## 3. In-depth
 
 ## 4. Data collection

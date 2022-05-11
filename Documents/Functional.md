@@ -41,11 +41,21 @@ The team will be composed of:
 
 ## 3. In-depth
 
-Some more explanations on the project :
+To go furthermore in depth in this project, this software will have to be an artificial intelligence with deep learning of the language.
 
-- We want to detect French and English whatever the level of the user
-- The colour shall change depending on the language the degree of  mastery of the user.
-- red is french, green is english, blue is an unrecognized language and the yellow graduation depends on the accent.
+We want you to train your AI to recognise which language the students are talking. 
+
+To do that, a device should be provided where it will have a light or multiple lights. 
+- The light will be red when the students speak French.
+- The light will be green when the students speak English.
+
+And to go further,
+- The light will be light green when they speak English with a small English accent.
+- The light will be yellow when they speak English with both accent.
+- The light will be orange when they speak English with a very French accent.
+- The light will be blue when the AI doesn’t recognise the language speaking.
+
+So the graduation of color will depend on the accent of the students.
 
 <img src="./pictures/Color chart.png">
 

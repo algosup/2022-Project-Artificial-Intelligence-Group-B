@@ -54,10 +54,13 @@ The produced device should be provided with a light that would change color depe
 - Green when speaking English.
 
 And to go further, the device may also detect accents and use more colors of the light:
+|             |                                         |
+| ----------- | --------------------------------------- |
 | Light green | English with a small English accent     |
 | Orange      | English with a very French accent       |
 | Yellow      | English with both accents               |
 | Blue        | Other language or unrecognized language |
+
 The color gradient would depend on the accents as represented in this picture:
 
 <img src="./pictures/Color chart.png">

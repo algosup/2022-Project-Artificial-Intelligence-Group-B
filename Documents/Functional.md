@@ -83,7 +83,7 @@ The second way is to use data from the internet with a bank of data. The advanta
 
 This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
 
-We think that it is not necessary to keep the records in a cloud to detect a language. Our device needs just to record a conversation and keep the need that it needs to detect which languages are and after it deletes the record. In this way, we don’t need a database to store the data. 
+We think that it is not necessary to keep the records in a cloud to detect a language. Our device needs just to record the language of a conversation. 
 
 To prevent the possibility of accessing the data, the device will not be connected to the internet. It will also make the device difficult to hack because to hack it we will need to have a physics contact with the device.
 

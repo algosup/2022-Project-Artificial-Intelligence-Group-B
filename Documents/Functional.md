@@ -81,9 +81,13 @@ The second way is to use data from the internet with a bank of data. The advanta
 
 ## 5. Privacy and confidentiality
 
-The records will not be kept in a cloud to detect a language. Thanks to this, we will not need to store the live conversation. The device will detect the language and delete the record afterward.
+This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
 
-The encryption of some information may be required to ensure security and confidentiality. The device will not connect to the internet to save the data. This will also make the device difficult to hack because it would require physical contact with the device.
+We think that it is not necessary to keep the records in a cloud to detect a language. Our device needs just to record a conversation and keep the need that it needs to detect which languages are and after it deletes the record. In this way, we don’t need a database to store the data. 
+
+To prevent the possibility of accessing the data, the device will not be connected to the internet. It will also make the device difficult to hack because to hack it we will need to have a physics contact with the device.
+
+The encryption of some information may be required to ensure security and confidentiality.
 
 
 

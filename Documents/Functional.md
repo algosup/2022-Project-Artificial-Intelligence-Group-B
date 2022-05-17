@@ -6,6 +6,8 @@
 - [3. In-depth](#3-in-depth)
 - [4. Data collection](#4-data-collection)
 - [5. Privacy and confidentiality](#5-privacy-and-confidentiality)
+  - [Privacy](#privacy)
+  - [Confidentiality](#confidentiality)
 - [6. Use cases](#6-use-cases)
 
 ---
@@ -35,12 +37,12 @@ The team will be composed of:
 
 ## 2. Definitions of terms
 
-| Terms | Definition |
-| ----- | ---------- |
-| Artificial intelligence (AI) | Ability of a computer or a robot controlled by a computer to do tasks that are usually done by humans because they require human intelligence and discernment. |
-| Deep Learning | Concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a Neural Network as a part of the thinking process for an AI. It takes an enormous amount of data to train Deep Learning and a considerably powerful computing device for such computation methods. |
-| Hardware | Physical and electronic parts of a computer or other piece of equipment, opposite to the software which corresponds to the programs and instructions that run on the computer. |
-| Machine learning | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI. |
+| Terms                        | Definition                                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Artificial intelligence (AI) | Ability of a computer or a robot controlled by a computer to do tasks that are usually done by humans because they require human intelligence and discernment.                                                                                                                                                                                       |
+| Deep Learning                | Concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a Neural Network as a part of the thinking process for an AI. It takes an enormous amount of data to train Deep Learning and a considerably powerful computing device for such computation methods. |
+| Hardware                     | Physical and electronic parts of a computer or other piece of equipment, opposite to the software which corresponds to the programs and instructions that run on the computer.                                                                                                                                                                       |
+| Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI.                                                  |
 
 
 
@@ -54,17 +56,16 @@ As result, the device should be provided with a light that would change colour d
 - Green when speaking English.
 
 And to go further, you can use more colors of the light:
-|     Color   |   Reason                                |
-| ----------- | --------------------------------------- |
-| Light green | The AI have recognise more English than French   |
+| Color       | Reason                                         |
+| ----------- | ---------------------------------------------- |
+| Light green | The AI have recognise more English than French |
 | Orange      | The AI have recognise more French than English |
 | Yellow      | The AI can't decide between French and English |
-| Blue        | Other language or unrecognized language |
+| Blue        | Other language or unrecognized language        |
 
 The color gradient would depend on the accents as represented in this picture:
 
-<img src="./pictures/Chart.png">
-<img src="./pictures/Color chart.png">
+<img src="./pictures/Chart.png" width="420" height="350">
 
 
 
@@ -104,7 +105,11 @@ The encryption of some information may be required to ensure security and confid
 
 This device can have multiple use cases:
 
-First of all, it may be used to automatically select the origin language on an automatic translator.
+First of all, it can be employed in public services to redirect people to the right place with the right translator, in tourist Office for example.
 
-Secondly, it could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
+Besides, it may be used to automatically select the origin language on an automatic translator. After detecting the language, the audio could then be translated into the desired language.
+
+Moreover, it could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
 An example would be, at ALGOSUP, an all-English French school of computer science, if a student were to speak French during project time, the police would be alerted and would take them into custody.
+
+<!--Finally, -->

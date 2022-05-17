@@ -1,0 +1,5 @@
+# Install the required libraries for training using
+# pip install -r requirements.txt
+
+matplotlib
+tensorflow

@@ -14,5 +14,11 @@
 This project aims to create a device that would listen to the voices in the room and tell what language is spoken.
 This would be done by using Deep Learning to tell the languages apart.
 
+## Documents
+
+[Functional Specifications](Documents/Functional.md) <br>
+[Technical Specifications](Documents/Technical.md) <br>
+[Individual Functional Specifications](Documents/Personal%20functionals/)
+
 ## Usage
 Soon™

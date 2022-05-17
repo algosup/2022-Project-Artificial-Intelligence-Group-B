@@ -46,23 +46,24 @@ The team will be composed of:
 
 ## 3. In-depth
 
-To go further in-depth on this project, this software will have to be an Artificial Intelligence using Deep Learning.
-The AI should be trained to recognize which language people are talking in.
+To go in-depth on this project, this software have to be an Artificial Intelligence using Deep Learning.
+The AI should be trained to recognize which language people are talking in. After this, to go further you can show how much the AI have recognise. 
 
-The produced device should be provided with a light that would change color depending on the spoken language:
+As result, the device should be provided with a light that would change colour depending on the spoken language:
 - Red when speaking French.
 - Green when speaking English.
 
-And to go further, the device may also detect accents and use more colors of the light:
-|             |                                         |
+And to go further, you can use more colors of the light:
+|     Color   |   Reason                                |
 | ----------- | --------------------------------------- |
-| Light green | English with a small English accent     |
-| Orange      | English with a very French accent       |
-| Yellow      | English with both accents               |
+| Light green | The AI have recognise more English than French   |
+| Orange      | The AI have recognise more French than English |
+| Yellow      | The AI can't decide between French and English |
 | Blue        | Other language or unrecognized language |
 
 The color gradient would depend on the accents as represented in this picture:
 
+<img src="./pictures/Chart.png">
 <img src="./pictures/Color chart.png">
 
 
@@ -83,11 +84,19 @@ The second way is to use data from the internet with a bank of data. The advanta
 
 This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
 
-We think that it is not necessary to keep the records in a cloud to detect a language. Our device needs just to record the language of a conversation. 
+### Privacy 
+
+To use this kind of device, all the person that are listen must know that the device listen to them. 
+If you put this device in project room or working room, an attach or a signage must be in this room. 
+
+### Confidentiality
+
+We think that it is not necessary to keep the records in a cloud to detect a language. Because the device needs to record the language of a conversation only.  And also, to avoid all problems regarding confidentiality.
 
 To prevent the possibility of accessing the data, the device will not be connected to the internet. It will also make the device difficult to hack because to hack it we will need to have a physics contact with the device.
 
 The encryption of some information may be required to ensure security and confidentiality.
+
 
 
 

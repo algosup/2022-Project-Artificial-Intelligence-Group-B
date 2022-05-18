@@ -1,28 +1,30 @@
 # Technical Specification # 
 
 ---
-- [1. Introduction](#1-introduction)
-    - [a. Overview, Problem Description, Summary, or Abstract](#a-overview-problem-description-summary-or-abstract)
+- [Technical Specification](#technical-specification)
+  - [1. Introduction](#1-introduction)
+    - [a. Overview](#a-overview)
     - [b. Glossary of Terminology](#b-glossary-of-terminology)
     - [c. Context or Background](#c-context-or-background)
     - [d. Goals or Product and Technical Requirements](#d-goals-or-product-and-technical-requirements)
     - [e. Non-Goals or Out of Scope](#e-non-goals-or-out-of-scope)
-    - [f. Future Goals](#f-future-goals)
-- [2. Solutions](#2-solutions)
+  - [2. Solutions](#2-solutions)
     - [a. Current or Existing Solution / Design](#a-current-or-existing-solution--design)
     - [b. Suggested or Proposed Solution / Design](#b-suggested-or-proposed-solution--design)
     - [c. Alternate Solutions / Designs](#c-alternate-solutions--designs)
-- [3. Further Considerations](#3-further-considerations)
+  - [3. Further Considerations](#3-further-considerations)
     - [a. Security and privacy considerations](#a-security-and-privacy-considerations)
     - [b. Risks](#b-risks)
-- [4. Success Evaluation](#4-success-evaluation)
-    - [a. Impact](#a-impact)
-- [5. Work](#5-work)
+      - [Noises](#noises)
+      - [Multiple people speaking in the same time](#multiple-people-speaking-in-the-same-time)
+      - [Differents accents](#differents-accents)
+  - [4. Impact of the project](#4-impact-of-the-project)
+  - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
     - [b. Prioritization](#b-prioritization)
     - [c. Milestones](#c-milestones)
     - [d. Future work](#d-future-work)
-- [6. End Matter](#6-end-matter)
+  - [6. End Matter](#6-end-matter)
     - [a. References](#a-references)
     - [b. Acknowledgments](#b-acknowledgments)
   
@@ -35,9 +37,9 @@
 ## 1. Introduction
 
 
-### a. Overview, Problem Description, Summary, or Abstract
+### a. Overview
 
-This product has to detect the language of a conversation between English and French. When one langue will be detected, the user must be warned he is talking in this language.
+This product has to detect the language of a conversation between English and French. When one langue will be detected, the user must be warned he is talking in this language. 
 
 ### b. Glossary of Terminology
 |                              |                                                                               |
@@ -48,6 +50,15 @@ This product has to detect the language of a conversation between English and Fr
 | Language detection           | Process of detecting the language of a conversation.                          |
 | Machine Learning             | Process of using data to learn patterns and predict future behavior.          |
 | Tensorflow                   | Machine learning library that is used to train a model.                       |
+| CSV                          | Comma-separated values, it's a type of file where the data are separeted by a comma.     |
+| Greyscale                    | A grayscale image is one in which the value of each pixel is a single sample representing only an      amount of light that is, it carries only intensity information. |
+| Image                       | A picture is a two-dimensional object that is typically displayed on a computer monitor. |
+| Pandas                      | A library that is used to read and write data in CSV format.                    |
+| Numpy                       | A library for the Python programming language, adding support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.        |
+| Kaggle                      | A website that allows us to download datasets from the internet and use an online GPU.   |
+| Deep learning               | Deep Learning, is the concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a neural network as a part of the thinking process for an AI. It takes an enormous amount of data to train deep learning and a considerably powerful computing device for such computation methods.|
+| Neural network              | A neural network is a computer program that can be used to perform a wide range of tasks, such as pattern recognition, computer vision, natural language processing, speech recognition, and machine learning. |
+
 
 ### c. Context or Background
 
@@ -63,12 +74,7 @@ This program should make use of Tensorflow and run on an Arduino Nano 33 BLE Sen
 
 ### e. Non-Goals or Out of Scope
 
-<!-- TODO Product and technical requirements that will be disregarded -->
-
-### f. Future Goals
-
-For the future, we have been thinking about how to improve the device, we want to add more languages like Spanish, Arabic, etc. We also want to add a voice assistant to correct English mistakes made by users and to give them a better experience.
-
+For the future, we have been thinking about how to improve the device, we want to add more languages like Spanish, Arabic, etc. We also want to add a voice assistant to correct English mistakes made by users and to give them a better experience. One of the possible improvements is to add an accent recognition system. 
 
 
 <br>
@@ -97,15 +103,19 @@ The device will not be connected to the Internet to do its language search, it w
 
 ### b. Risks
 
+#### Noises
+
+#### Multiple people speaking in the same time
+
+#### Differents accents
+
 
 
 <br>
 
-## 4. Success Evaluation
+## 4. Impact of the project
 
-### a. Impact
-
-
+The final goal of this project is to detect the spoken language. If we take the example of the ALGOSUP school, detecting the language spoken in English class would allow the teacher to know if someone is speaking French when the teacher is not nearby. Practice is essential in learning a language and the device can encourage this practice.
 
 <br>
 
@@ -127,4 +137,10 @@ The device will not be connected to the Internet to do its language search, it w
 
 ### a. References
 
+https://pub.towardsai.net/spoken-language-recognition-using-convolutional-neural-networks-6aec5963eb18
+https://github.com/fraunhofer-iais/language-recognition
+https://commonvoice.mozilla.org/en/datasets
+
 ### b. Acknowledgments
+
+During this project, we will be accompanied and helped by few people and it is important to thank them. To begin we will follow the Jackie Boscher classes for few weeks to learn artificial intelligence, deep learning and python. We would also like to thank other team for the help they have given us in solving our problems. Finally we would like to thank Franck Jeannin and the ALGOSUP school for their advice, help and materials.

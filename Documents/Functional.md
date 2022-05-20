@@ -85,16 +85,16 @@ The second way is to use data from the internet with a bank of data. The advanta
 
 This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
 
-### Privacy 
+### Privacy
 
 To use this kind of device, all the people that are being monitored must know that the device is on. 
-If you put this device in a project room or working room, something similar to a signage must be in this room. 
+If you put this device in a project room or working room, something similar to a signage must be put in the room. 
 
 ### Confidentiality
 
-We think that it is not necessary to keep the records in a cloud to detect a language. Because the device needs to record the language of a conversation only.  And also, to avoid all problems regarding confidentiality.
+We think that it is not necessary to keep records of the languages that were used since it would bring up confidentiality problems and may cause a breach of data to occur.
 
-To prevent the possibility of accessing the data, the device will not be connected to the internet. It will also make the device difficult to hack because to hack it we will need to have a physics contact with the device.
+To prevent the possibility of accessing the data, the device will not be connected to the internet. It will also make the device difficult to hack since it would involve a physical contact with the hardware.
 
 The encryption of some information may be required to ensure security and confidentiality.
 

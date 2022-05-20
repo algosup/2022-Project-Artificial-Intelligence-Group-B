@@ -1,3 +1,4 @@
+
 # Functional Specification
 
 - [1. Introduction](#1-introduction)
@@ -9,6 +10,7 @@
   - [Privacy](#privacy)
   - [Confidentiality](#confidentiality)
 - [6. Use cases](#6-use-cases)
+- [7. Out of scope](#7-out-of-scope)
 
 ---
 
@@ -35,6 +37,7 @@ The team will be composed of:
 
 
 <br>
+
 ## 2. Definitions of terms
 
 | Terms                        | Definition                                                                                                                                                                                                                                                                                                                                           |
@@ -42,10 +45,11 @@ The team will be composed of:
 | Artificial intelligence (AI) | Ability of a computer or a robot controlled by a computer to do tasks that are usually done by humans because they require human intelligence and discernment.                                                                                                                                                                                       |
 | Deep Learning                | Concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a Neural Network as a part of the thinking process for an AI. It takes an enormous amount of data to train Deep Learning and a considerably powerful computing device for such computation methods. |
 | Hardware                     | Physical and electronic parts of a computer or other piece of equipment, opposite to the software which corresponds to the programs and instructions that run on the computer.                                                                                                                                                                       |
-| Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI.                                                  |
-
+| Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI. |                                                 
+|Minimum Viable Product|A minimum viable product (MVP) is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.|
 
 <br>
+
 ## 3. In-depth
 
 To go in-depth on this project, this software have to be an Artificial Intelligence using Deep Learning.
@@ -60,7 +64,6 @@ And to go further, you can use more colors of the light:
 | ----------- | ---------------------------------------------- |
 | Light green | The AI have recognise more English than French |
 | Orange      | The AI have recognise more French than English |
-| Yellow      | The AI can't decide between French and English |
 | Blue        | Other language or unrecognized language        |
 
 The color gradient would depend on the accents as represented in this picture:
@@ -69,6 +72,7 @@ The color gradient would depend on the accents as represented in this picture:
 
 
 <br>
+
 ## 4. Data collection
 
 One of the crucial points of this project is the training of the AI. To do so, a lot of data (voice recording) is needed.
@@ -81,6 +85,7 @@ The second way is to use data from the internet with a bank of data. The advanta
 
 
 <br>
+
 ## 5. Privacy and confidentiality
 
 This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
@@ -101,9 +106,35 @@ The encryption of some information may be required to ensure security and confid
 
 
 <br>
+
 ## 6. Use case
 
 This device could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
+
 An example would be, at ALGOSUP, an all-English, French school of computer science, if a student were to speak French during project time, the police would be alerted and would take them into custody.
 
 
+<br>
+
+## 7. Out of scope
+
+We have just presented you the Minimum Viable Product (MVP). 
+To improve the MVP you can add some interesting features like:
+
+#### Recognise accent
+
+To help more the students to improve they English, we can add to the equation the accent of people.
+For example:
+
+| Color       | Reason                                            |
+| ----------- | --------------------------------------------------|
+| Green       |The person talk English with a very good Accent.   |
+| Light green |The person talk English with a good Accent.        |
+| Yellow      |The person talk English with Understandable accent.|
+| Orange      |The person talk English with a bad Accent.         |
+| Red         |The person talk French.                            |
+| Blue        |Other language or unrecognized language.           |
+
+#### Recognise other languages
+
+On the other hand, we can train the AI to recognise more language. In that case, each language will have a differnete color.

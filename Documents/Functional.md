@@ -34,7 +34,7 @@ The team will be composed of:
 - Quentin CLEMENT
 
 
-
+<br>
 ## 2. Definitions of terms
 
 | Terms                        | Definition                                                                                                                                                                                                                                                                                                                                           |
@@ -45,7 +45,7 @@ The team will be composed of:
 | Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI.                                                  |
 
 
-
+<br>
 ## 3. In-depth
 
 To go in-depth on this project, this software have to be an Artificial Intelligence using Deep Learning.
@@ -68,7 +68,7 @@ The color gradient would depend on the accents as represented in this picture:
 <img src="./pictures/Chart.png" width="420" height="350">
 
 
-
+<br>
 ## 4. Data collection
 
 One of the crucial points of this project is the training of the AI. To do so, a lot of data (voice recording) is needed.
@@ -80,7 +80,7 @@ On the other hand, there are many disadvantages like the reliability of the data
 The second way is to use data from the internet with a bank of data. The advantage is the number of data that we can have very quickly. Moreover, there are no real disadvantages.
 
 
-
+<br>
 ## 5. Privacy and confidentiality
 
 This device will listen to all the conversations around it, so we want to be sure that the conversations are not recorded or used for something else than the detecting language.
@@ -100,7 +100,7 @@ The encryption of some information may be required to ensure security and confid
 
 
 
-
+<br>
 ## 6. Use cases
 
 This device can have multiple use cases:

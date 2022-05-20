@@ -87,8 +87,8 @@ This device will listen to all the conversations around it, so we want to be sur
 
 ### Privacy 
 
-To use this kind of device, all the person that are listen must know that the device listen to them. 
-If you put this device in project room or working room, an attach or a signage must be in this room. 
+To use this kind of device, all the people that are being monitored must know that the device is on. 
+If you put this device in a project room or working room, something similar to a signage must be in this room. 
 
 ### Confidentiality
 
@@ -101,15 +101,9 @@ The encryption of some information may be required to ensure security and confid
 
 
 <br>
-## 6. Use cases
+## 6. Use case
 
-This device can have multiple use cases:
+This device could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
+An example would be, at ALGOSUP, an all-English, French school of computer science, if a student were to speak French during project time, the police would be alerted and would take them into custody.
 
-First of all, it can be employed in public services to redirect people to the right place with the right translator, in tourist Office for example.
 
-Besides, it may be used to automatically select the origin language on an automatic translator. After detecting the language, the audio could then be translated into the desired language.
-
-Moreover, it could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
-An example would be, at ALGOSUP, an all-English French school of computer science, if a student were to speak French during project time, the police would be alerted and would take them into custody.
-
-<!--Finally, -->

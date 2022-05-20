@@ -14,19 +14,17 @@
 
 ---
 
-
-
 ## 1. Introduction
 
-The goal of this project is to create a device. It would listen to conversations and detect whether the language is English or French. The students will not interact with the device.
+The goal of this project is to create a device that would listen to conversations and detect whether the language is English or French. The students would not interact with the device.
 
-A color will be emitted following the language spoken (green for good English, red for French, and blue for other languages).
+A color would be emitted following the language spoken (green for good English, red for French, and blue for other languages).
 
 We have 9 weeks to complete this project, from April 25th to June 24th, 2022.
 
 ### Team
 
-The team will be composed of:
+The team is composed of:
 
 - Clémentine CUREL as Project Manager
 - Louis DE LAVENNE DE CHOULOT DE CHABAUD-LA-TOUR as Tech Leader
@@ -35,7 +33,6 @@ The team will be composed of:
 - Thomas PLANCHARD
 - Quentin CLEMENT
 
-
 <br>
 
 ## 2. Definitions of terms
@@ -43,33 +40,33 @@ The team will be composed of:
 | Terms                        | Definition                                                                                                                                                                                                                                                                                                                                           |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Artificial intelligence (AI) | Ability of a computer or a robot controlled by a computer to do tasks that are usually done by humans because they require human intelligence and discernment.                                                                                                                                                                                       |
-| Deep Learning                | Concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a Neural Network as a part of the thinking process for an AI. It takes an enormous amount of data to train Deep Learning and a considerably powerful computing device for such computation methods. |
+| Deep Learning                | Concept of computers simulating the process a human brain takes to analyse, think and learn. The deep learning process involves something called a Neural Network as a part of the thinking process for an AI. It takes an enormous amount of data to train Deep Learning and a considerably powerful computing device for such computation methods. |
 | Hardware                     | Physical and electronic parts of a computer or other piece of equipment, opposite to the software which corresponds to the programs and instructions that run on the computer.                                                                                                                                                                       |
-| Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI. |                                                 
+| Machine learning             | Subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems. Machine learning is one way to use AI. |
 |Minimum Viable Product|A minimum viable product (MVP) is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.|
 
 <br>
 
 ## 3. In-depth
 
-To go in-depth on this project, this software have to be an Artificial Intelligence using Deep Learning.
-The AI should be trained to recognize which language people are talking in. After this, to go further you can show how much the AI have recognise. 
+To go in-depth on this project, this software has to be an Artificial Intelligence using Deep Learning.
+The AI should be trained to recognise which language people are talking in. After this, to go further you can show how much the AI have recognise.
 
-As result, the device should be provided with a light that would change colour depending on the spoken language:
+As result, the device would have a light that would change colour depending on the spoken language:
+
 - Red when speaking French.
 - Green when speaking English.
 
 And to go further, you can use more colors of the light:
 | Color       | Reason                                         |
 | ----------- | ---------------------------------------------- |
-| Light green | The AI have recognise more English than French |
-| Orange      | The AI have recognise more French than English |
-| Blue        | Other language or unrecognized language        |
+| Light green | The AI has recognise more English than French |
+| Orange      | The AI has recognise more French than English |
+| Blue        | Other language or unrecognised language        |
 
 The color gradient would depend on the accents as represented in this picture:
 
 <img src="./pictures/Chart.png" width="420" height="350">
-
 
 <br>
 
@@ -83,7 +80,6 @@ On the other hand, there are many disadvantages like the reliability of the data
 
 The second way is to use data from the internet with a bank of data. The advantage is the number of data that we can have very quickly. Moreover, there are no real disadvantages.
 
-
 <br>
 
 ## 5. Privacy and confidentiality
@@ -92,8 +88,8 @@ This device will listen to all the conversations around it, so we want to be sur
 
 ### Privacy
 
-To use this kind of device, all the people that are being monitored must know that the device is on. 
-If you put this device in a project room or working room, something similar to a signage must be put in the room. 
+To use this kind of device, all the people that will be monitored must know that the device is on.
+If you were to put this device in a project room or working room, something similar to a signage would have to be present in the room.
 
 ### Confidentiality
 
@@ -103,22 +99,19 @@ To prevent the possibility of accessing the data, the device will not be connect
 
 The encryption of some information may be required to ensure security and confidentiality.
 
-
-
 <br>
 
 ## 6. Use case
 
 This device could be used worldwide in schools to make sure students speak English in English classes and not in their native language.
 
-An example would be, at ALGOSUP, an all-English, French school of computer science, if a student were to speak French during project time, the police would be alerted and would take them into custody.
-
+For example, in ALGOSUP, an all-English speaking school based in France, if a student was to speak French during project time.
 
 <br>
 
 ## 7. Out of scope
 
-We have just presented you the Minimum Viable Product (MVP). 
+We have just presented you the Minimum Viable Product (MVP).
 To improve the MVP you can add some interesting features like:
 
 #### Recognise accent
@@ -133,10 +126,10 @@ For example:
 | Yellow      |The person talk English with Understandable accent.|
 | Orange      |The person talk English with a bad Accent.         |
 | Red         |The person talk French.                            |
-| Blue        |Other language or unrecognized language.           |
+| Blue        |Other language or unrecognised language.           |
 
 <img src="./pictures/Accent.jpg" height="350">
 
 #### Recognise other languages
 
-On the other hand, we can train the AI to recognise more language. In that case, each language will have a differnete color.
+We could train the AI to recognise more languages. In that case, each languages would have a different color.

@@ -135,6 +135,8 @@ For example:
 | Red         |The person talk French.                            |
 | Blue        |Other language or unrecognized language.           |
 
+<img src="./pictures/Accent.jpg" width="420" height="350">
+
 #### Recognise other languages
 
 On the other hand, we can train the AI to recognise more language. In that case, each language will have a differnete color.

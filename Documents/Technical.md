@@ -15,14 +15,15 @@
   - [3. Further Considerations](#3-further-considerations)
     - [a. Security and privacy considerations](#a-security-and-privacy-considerations)
     - [b. Risks](#b-risks)
-      - [Noises](#noises)
+      - [Noises with voices](#noises-with-voices)
       - [Multiple people speaking in the same time](#multiple-people-speaking-in-the-same-time)
       - [Differents accents](#differents-accents)
+      - [Noises without voices](#noises-without-voices)
+      - [No sounds](#no-sounds)
   - [4. Impact of the project](#4-impact-of-the-project)
   - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
-    - [b. Prioritization](#b-prioritization)
-    - [c. Milestones](#c-milestones)
+    - [b. Milestones](#b-milestones)
     - [d. Future work](#d-future-work)
   - [6. End Matter](#6-end-matter)
     - [a. References](#a-references)
@@ -144,9 +145,14 @@ The final goal of this project is to detect the spoken language. If we take the 
 
 ### a. Work estimates and timelines
 
-### b. Prioritization
+### b. Milestones
 
-### c. Milestones
+- find an english and a french voice dataset on Internet
+- convert the audio data into a spectrogram to be compatible with the model
+- creation of a model able to analyze a spectrogram and determine the spoken language between French and English
+- train the model with the labelled data
+- test the model with random data (and improve the model until the accuray during the test reach 96%)
+- insert the model on the raspberry pi
 
 ### d. Future work
 

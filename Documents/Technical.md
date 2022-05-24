@@ -145,6 +145,16 @@ The final goal of this project is to detect the spoken language. If we take the 
 
 ### a. Work estimates and timelines
 
+| Task                      | Duration | Description                                                                                           |
+| ------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| Functional specifications | 1 week   | Take the assignment into consideration, plannification and create personals functional specifications |
+| Technical specifications  | 1 week   |                                                                                                       |
+| Get data                  | 1 week   | Find, download, and unzip the data                                                                    |
+| Familiarization           | 3 days   | Look at and plot the data                                                                             |
+| Preparation               | 1 week   | Split, clean, and organize the data then format it into fixed-sized images                            |
+| Modeling                  | 3 weeks  | Create a model, train, test, fine-tune, repeat                                                        |
+| Hardware                  | 1 week   | Put the software on the microcontroller (Raspberry) and make sure it works                            |
+
 ### b. Milestones
 
 - find an english and a french voice dataset on Internet

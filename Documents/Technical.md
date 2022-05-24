@@ -103,11 +103,32 @@ The device will not be connected to the Internet to do its language search, it w
 
 ### b. Risks
 
-#### Noises
+For this kind of project, we have multiple risk, especially around audios.
+
+#### Noises with voices
+
+Having noises in a voice recording can prevent the AI ​​from predicting the correct language. 
+
+To solve this problem you can add a function to your code to put noise on audio or you can find or create a set of voice audio with noises
 
 #### Multiple people speaking in the same time
 
+
+
 #### Differents accents
+
+In the future, ALGOSUP will have international students that don't have a French accent. In that case the AI will make a probability between 0.5 and 1 because it will recognise English. 
+
+If in a certain case, we want to evaluate accent other than French we will need to add more language recognition.
+
+#### Noises without voices
+
+When people work on computer, they often make some noises with their keyboard, mouse or anything else. 
+If the sound if higher than the voice, the device will emit a blue light because it will not recognise the sound.
+
+#### No sounds
+
+Sometimes in a project room, there may be absolutely no sound or noise, in this case, the device will not return any light because it will not record any sound.
 
 
 

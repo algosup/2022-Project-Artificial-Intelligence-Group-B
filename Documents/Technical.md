@@ -9,9 +9,9 @@
     - [d. Goals or Product and Technical Requirements](#d-goals-or-product-and-technical-requirements)
     - [e. Non-Goals or Out of Scope](#e-non-goals-or-out-of-scope)
   - [2. Solutions](#2-solutions)
-    - [a. Current or Existing Solution / Design](#a-current-or-existing-solution--design)
-    - [b. Suggested or Proposed Solution / Design](#b-suggested-or-proposed-solution--design)
-    - [c. Alternate Solutions / Designs](#c-alternate-solutions--designs)
+    - [a. Existing Solution](#a-existing-solution)
+    - [b. Suggested Solution](#b-suggested-solution)
+    - [c. Retained Solutions](#c-retained-solutions)
   - [3. Further Considerations](#3-further-considerations)
     - [a. Security and privacy considerations](#a-security-and-privacy-considerations)
     - [b. Risks](#b-risks)
@@ -82,17 +82,28 @@ For the future, we have been thinking about how to improve the device, we want t
 
 ## 2. Solutions
 
-### a. Current or Existing Solution / Design
+### a. Existing Solution
 
-That exists many AI capable to detect the language of a conversation between English and French. If we take for example Siri, Alexa, or Google Traduction all of them can detect the language spoken by the user. The big difference between many of them and our AI is that they are capable to detect the language only if the user configured the device with his voice.
+Many AIs can detect the language of a conversation between English and French. If we take, for example, Siri, Alexa, or Google Traduction, all of them can detect the language spoken by the user. The big difference between many of them and our AI is that they can only detect the language if the user previously configured the device with his voice.
 
-### b. Suggested or Proposed Solution / Design
+### b. Suggested Solution
 
-We want to use Arduino to put our AI in and connect it to a light. The AI would take images as input and output the language. Those images would be spectrograms of the conversation.
+We initially wanted to have our AI in an Arduino Nano BLE and use the Arduino's LEDs. But after looking at the size of applications like Keras' InceptionV3, we decided that it would be too complicated to make a good neural network fit in the memory.
 
-### c. Alternate Solutions / Designs
+We don't use Google Collab as GPUs are often not available. We can't let training run overnight. The size of our google drive limits our dataset size.
 
+We could pre-process data as they are loaded, using CSV and Pandas. But this makes it hard to work with Keras DataGenerator.
 
+### c. Retained Solutions
+
+We decided to use a more powerful Raspberry Pi 3.
+We will record sound over a 10s period, then convert this WAV to an image using a MEL spectrogram. Finally, AI would take the image as input and output a probability of it being English or French.
+
+We use Tensorflow and Keras python library to train and run our model. These are popular libraries that we are taught in class.
+
+We train our model in Kaggle so that we can use TPUs and unlimited size Dataset.
+
+To process and load the images, we will make the conversion using a Miltiprocess.Pool to go faster, and once they are processed, we upload the image to a Kaggle dataset. We will use Keras DataGenerator FlowFromDirectory to load all the images before training.
 
 <br>
 

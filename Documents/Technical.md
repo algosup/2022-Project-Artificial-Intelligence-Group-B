@@ -15,11 +15,6 @@
   - [3. Further Considerations](#3-further-considerations)
     - [a. Security and privacy considerations](#a-security-and-privacy-considerations)
     - [b. Risks](#b-risks)
-      - [Noises with voices](#noises-with-voices)
-      - [Multiple people speaking in the same time](#multiple-people-speaking-in-the-same-time)
-      - [Differents accents](#differents-accents)
-      - [Noises without voices](#noises-without-voices)
-      - [No sounds](#no-sounds)
   - [4. Impact of the project](#4-impact-of-the-project)
   - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
@@ -119,11 +114,9 @@ For this kind of project, we have multiple risk, especially around audios.
 
 #### Noises with voices
 
-Having noises in a voice recording can prevent the AI ​​from predicting the correct language. 
+Having noises in a voice recording can prevent the AI from predicting the correct language. 
 
 To solve this problem you can add a function to your code to put noise on audio or you can find or create a set of voice audio with noises
-
-#### Multiple people speaking in the same time
 
 
 

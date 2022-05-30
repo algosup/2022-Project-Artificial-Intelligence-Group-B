@@ -1,19 +1,20 @@
-# Technical Specification # 
+# Technical Specification #
 
 ---
+
 - [Technical Specification](#technical-specification)
   - [1. Introduction](#1-introduction)
     - [a. Overview](#a-overview)
     - [b. Glossary of Terminology](#b-glossary-of-terminology)
-    - [c. Context or Background](#c-context-or-background)
-    - [d. Goals or Product and Technical Requirements](#d-goals-or-product-and-technical-requirements)
-    - [e. Non-Goals or Out of Scope](#e-non-goals-or-out-of-scope)
+    - [c. Context](#c-context)
+    - [d. Goal](#d-goal)
+    - [e. Out of Scope](#e-out-of-scope)
   - [2. Solutions](#2-solutions)
-    - [a. Existing Solution](#a-existing-solution)
+    - [a. Existing Solutions](#a-existing-solutions)
     - [b. Suggested Solution](#b-suggested-solution)
     - [c. Retained Solutions](#c-retained-solutions)
   - [3. Further Considerations](#3-further-considerations)
-    - [a. Security and privacy considerations](#a-security-and-privacy-considerations)
+    - [a. Security and privacy](#a-security-and-privacy)
     - [b. Risks](#b-risks)
   - [4. Impact of the project](#4-impact-of-the-project)
   - [5. Work](#5-work)
@@ -26,18 +27,16 @@
   
 ---
 
-
-
 <br>
 
 ## 1. Introduction
 
-
 ### a. Overview
 
-This product has to detect the language of a conversation between English and French. When one langue will be detected, the user must be warned he is talking in this language. 
+This product has to detect the language of a conversation, either English and French. When a language is detected, a led will be lit with a color matching the language.
 
 ### b. Glossary of Terminology
+
 |                              |                                                                               |
 | ---------------------------- | ----------------------------------------------------------------------------- |
 | Arduino                      | Microcontroller board that is used to control the electronics in the product. |
@@ -55,87 +54,81 @@ This product has to detect the language of a conversation between English and Fr
 | Deep learning               | Deep Learning, is the concept of computers simulating the process a human brain takes to analyze, think and learn. The deep learning process involves something called a neural network as a part of the thinking process for an AI. It takes an enormous amount of data to train deep learning and a considerably powerful computing device for such computation methods.|
 | Neural network              | A neural network is a computer program that can be used to perform a wide range of tasks, such as pattern recognition, computer vision, natural language processing, speech recognition, and machine learning. |
 
+### c. Context
 
-### c. Context or Background
-
-The client is the director of a Computer Science school based in France. The particularity of this school is that everything happens in English even though all the students are French. But the students have a hard time complying with this rule. As such, most of their conversations take place in French when outside of the classes.
+The client is the director of a Computer Science school based in France. The particularity of this school is that everything is in English with students from all over the world. As such, most of the conversations are not in english when outside of the classes.
 
 This is why the client requested a language detection system, to force the students to speak English.
 
-### d. Goals or Product and Technical Requirements
+### d. Goal
 
-Our client wants a device that will detect the language of a conversation between English and French. To do that we need to create an AI which can detect the difference between the two languages.
+Our client wants a device able to detect the language of a conversation between English and French using an AI. An accent recognition system will be implemented.
 
-This program should make use of Tensorflow and run on an Arduino Nano 33 BLE Sense, as required by the client.
+This program should make use of Tensorflow and run on a light hardware, as required by the client.
 
-### e. Non-Goals or Out of Scope
+### e. Out of Scope
 
-For the future, we have been thinking about how to improve the device, we want to add more languages like Spanish, Arabic, etc. We also want to add a voice assistant to correct English mistakes made by users and to give them a better experience. One of the possible improvements is to add an accent recognition system. 
-
+For the future, we have been thinking about how to improve the device, we want to add more languages like Spanish, Arabic, etc. We also want to add a voice assistant to correct English mistakes made by users and to give them a better experience.
 
 <br>
 
 ## 2. Solutions
 
-### a. Existing Solution
+### a. Existing Solutions
 
-Many AIs can detect the language of a conversation between English and French. If we take, for example, Siri, Alexa, or Google Traduction, all of them can detect the language spoken by the user. The big difference between many of them and our AI is that they can only detect the language if the user previously configured the device with his voice.
+Many AIs can detect the language of a conversation between English and French. If we take for example, Siri, Alexa, or Google Traduction/home, they can detect the language spoken by the user. The big difference between many of them and our AI is that they can only detect the language if the user previously configured the device with his voice.
 
 ### b. Suggested Solution
 
-We initially wanted to have our AI in an Arduino Nano BLE and use the Arduino's LEDs. But after looking at the size of applications like Keras' InceptionV3, we decided that it would be too complicated to make a good neural network fit in the memory.
+We initially wanted to have our AI on an Arduino Nano BLE but for the same price, we were able to acquire an hardware better fitting the project, the raspberry pi 4.
 
-We don't use Google Collab as GPUs are often not available. We can't let training run overnight. The size of our google drive limits our dataset size.
+We don't use Google Collab's GPUs to train our model because they are of the older model `Tesla P80`. We can't let training run overnight. The size of our google drive limits our dataset size.
 
 We could pre-process data as they are loaded, using CSV and Pandas. But this makes it hard to work with Keras DataGenerator.
 
 ### c. Retained Solutions
 
-We decided to use a more powerful Raspberry Pi 3.
-We will record sound over a 10s period, then convert this WAV to an image using a MEL spectrogram. Finally, AI would take the image as input and output a probability of it being English or French.
+We decided to use a more powerful Raspberry Pi 4.
+We will record sound over a 10s period, then convert this stream of data to an image using a MEL spectrogram. Finally, the AI would take the image as an input and output a probability of it being English or French.
 
 We use Tensorflow and Keras python library to train and run our model. These are popular libraries that we are taught in class.
 
-We train our model in Kaggle so that we can use TPUs and unlimited size Dataset.
+We train our model with Kaggle so that we can use GPUs of the newest model `Tesla P100` and unlimited size Dataset.
 
-To process and load the images, we will make the conversion using a Miltiprocess.Pool to go faster, and once they are processed, we upload the image to a Kaggle dataset. We will use Keras DataGenerator FlowFromDirectory to load all the images before training.
+To process and load the images, we will make the conversion using a `Multiprocess.Pool` to go faster, and once they are processed, we upload the image to a Kaggle dataset. We will use Keras DataGenerator FlowFromDirectory to load all the images before training.
 
 <br>
 
 ## 3. Further Considerations
 
-### a. Security and privacy considerations
+### a. Security and privacy 
 
-The device will not be connected to the Internet to do its language search, it will be independent. The conversation data will be used for language search and will be deleted once processed. The main goal is protect the device and the user from potential hacks or data leaks.
+The device will not be connected to the Internet to do the recognition, it will be independent. The conversation data will be used for language recognition and never be stored. The main goal is to protect the device and the user from potential hacks or data leaks.
 
 ### b. Risks
 
 For this kind of project, we have multiple risk, especially around audios.
 
-#### Noises with voices
+**Noises with voices**
 
-Having noises in a voice recording can prevent the AI from predicting the correct language. 
+Having noises in a voice recording can prevent the AI from predicting the correct language.
 
-To solve this problem you can add a function to your code to put noise on audio or you can find or create a set of voice audio with noises
+To solve this problem you can add a function to your code to add noises on audio.
 
+**Differents accents**
 
-
-#### Differents accents
-
-In the future, ALGOSUP will have international students that don't have a French accent. In that case the AI will make a probability between 0.5 and 1 because it will recognise English. 
+In the future, ALGOSUP will have students from all over the world that have accents different from the french which is why the AI will make a probability between 0.5 and 1 to do the accent rating.
 
 If in a certain case, we want to evaluate accent other than French we will need to add more language recognition.
 
-#### Noises without voices
+**Background noises**
 
-When people work on computer, they often make some noises with their keyboard, mouse or anything else. 
-If the sound if higher than the voice, the device will emit a blue light because it will not recognise the sound.
+When people work on computer, they often make some noises with their keyboard, mouse or anything else.
+If the noises impede the recognition, the light will turn blue.  
 
-#### No sounds
+**No sounds**
 
-Sometimes in a project room, there may be absolutely no sound or noise, in this case, the device will not return any light because it will not record any sound.
-
-
+Sometimes in a project room, there may be absolutely no sound or noise, in this case, the device will not lit up a led.
 
 <br>
 
@@ -151,13 +144,13 @@ The final goal of this project is to detect the spoken language. If we take the 
 
 | Task                      | Duration | Description                                                                                           |
 | ------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| Functional specifications | 1 week   | Take the assignment into consideration, plannification and create personals functional specifications |
+| Functional specifications | 1 week   | Understand the scope of the project, plannify and create personals functional specifications. Ask the client for some clarifications |
 | Technical specifications  | 1 week   |                                                                                                       |
 | Get data                  | 1 week   | Find, download, and unzip the data                                                                    |
 | Familiarization           | 3 days   | Look at and plot the data                                                                             |
 | Preparation               | 1 week   | Split, clean, and organize the data then format it into fixed-sized images                            |
 | Modeling                  | 3 weeks  | Create a model, train, test, fine-tune, repeat                                                        |
-| Hardware                  | 1 week   | Put the software on the microcontroller (Raspberry) and make sure it works                            |
+| Hardware                  | 1 week   | Put the software on the hardware (Raspberry) and make sure it works                            |
 
 ### b. Milestones
 
@@ -170,18 +163,16 @@ The final goal of this project is to detect the spoken language. If we take the 
 
 ### d. Future work
 
-
-
 <br>
 
 ## 6. End Matter
 
 ### a. References
 
-https://pub.towardsai.net/spoken-language-recognition-using-convolutional-neural-networks-6aec5963eb18
-https://github.com/fraunhofer-iais/language-recognition
-https://commonvoice.mozilla.org/en/datasets
+<https://pub.towardsai.net/spoken-language-recognition-using-convolutional-neural-networks-6aec5963eb18>
+<https://github.com/fraunhofer-iais/language-recognition>
+<https://commonvoice.mozilla.org/en/datasets>
 
 ### b. Acknowledgments
 
-During this project, we will be accompanied and helped by few people and it is important to thank them. To begin we will follow the Jackie Boscher classes for few weeks to learn artificial intelligence, deep learning and python. We would also like to thank other team for the help they have given us in solving our problems. Finally we would like to thank Franck Jeannin and the ALGOSUP school for their advice, help and materials.
+During this project, we will be accompanied and helped by few people and it is important to thank them. To begin with we will follow Jackie Boscher's lessons for a few weeks to learn artificial intelligence, deep learning and python. Finally we would like to thank Franck Jeannin and the ALGOSUP school for their advice, help and materials.

@@ -309,8 +309,67 @@ TFLite_convertion(model)
 <br>
 
 #### Initialisation of the Raspberry Pi
+<br>
+
+#### Initialisation of the Raspberry Pi
+
+The first thing you'll need for this step is to have the Raspberry Pi OS 64 bits.
+
+Then, you just need to install Tensorflow Lite by following these 2 big steps:
+
+**a) Preparing your Raspberry Pi for Tensorflow**
+
+The first thing to do is to refresh our Raspberry Pi package list and upgrade any existing packages on your system.
+
+````
+sudo apt update
+sudo apt upgrade -y
+````
+
+Once the update completes, we will need to add the Google package repository containing TensorFlow Lite to your Raspberry Pi.
+
+````
+echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+````
+
+Now, you'll need to add its GPG key into our keychains directory.
+````
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null
+````
+
+Perform an update of the package list by using the command below.
+````
+sudo apt update
+````
+<br>
+
+**b) Installing Tensorflow Lite to your Raspberry Pi**
+
+This will install the latest TensorFlow Lite runtime from Google’s package repository.
+````
+sudo apt install python3-tflite-runtime
+````
+
+Now that we have installed the package, we can verify that TensorFlow Lite is now working by importing it.
+
+````
+python3
+````
+
+All we need to do is use the following line within the interface. All this line is doing is importing the interpreter library.
+````
+from tflite_runtime.interpreter import Interpreter
+````
+
+If everything has worked so far, you should see no further messages within the command line. You can now run your TensorFlow Lite models on your Raspberry Pi.
+
+<br>
 
 #### Connecting the LEDs
+
+
+<br>
+
 
 #### Connect the AI with LEDs
 

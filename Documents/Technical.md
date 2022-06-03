@@ -177,7 +177,30 @@ To create the dataset you should use dataset already create like "[Common Voice]
 
 Now you can create a new dataset by converting them into spectrograms to have images with this kind of code:
 
-    function to convert sound into spectrogramme
+```
+def spectrogram(audio_segment):
+    image_width = 500
+    image_height = 128
+    # Compute Mel-scaled spectrogram image
+    hl = audio_segment.shape[0] // image_width
+    spec = librosa.feature.melspectrogram(audio_segment,
+                                     n_mels=image_height, 
+                                     hop_length=int(hl))
+
+    # Logarithmic amplitudes
+    image = librosa.core.power_to_db(spec)
+
+    # Convert to np matrix
+    image_np = np.asmatrix(image)
+
+    # Normalize and scale
+    image_np_scaled_temp = (image_np - np.min(image_np))
+
+    image_np_scaled = image_np_scaled_temp / np.max(image_np_scaled_temp)
+
+    return image_np_scaled[::-1, :image_width]
+    
+````
 
 We advise you to make a clear structure for your dataset for a better understanding.
 

@@ -20,6 +20,15 @@
   - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
     - [b. Milestones](#b-milestones)
+      - [Creation of a dataset](#creation-of-a-dataset)
+      - [Accessing the datasets](#accessing-the-datasets)
+      - [Evaluation generator](#evaluation-generator)
+      - [Creation of a model](#creation-of-a-model)
+      - [Train the model](#train-the-model)
+      - [Conversion in TensorflowLite and save](#conversion-in-tensorflowlite-and-save)
+      - [Initialisation of the Raspberry Pi](#initialisation-of-the-raspberry-pi)
+      - [Connecting the LEDs](#connecting-the-leds)
+      - [Connect the AI with LEDs with python](#connect-the-ai-with-leds-with-python)
   - [6. End Matter](#6-end-matter)
     - [a. References](#a-references)
     - [b. Acknowledgments](#b-acknowledgments)
@@ -113,7 +122,7 @@ We will use Keras DataGenerator FlowFromDirectory to load all the images before 
 
 ## 3. Further Considerations
 
-### a. Security and privacy 
+### a. Security and privacy
 
 The device will not be connected to the Internet to do the recognition, it will be independent.
 The conversation data will be used for language recognition and never be stored.
@@ -170,12 +179,11 @@ Practice is essential in learning a language and the device can encourage this p
 
 ### b. Milestones
 
-
 #### Creation of a dataset
 
-To create the dataset you should use dataset already create like "[Common Voice](https://www.kaggle.com/datasets/mozillaorg/common-voice)" for the English and "[CommonVoice-fr](https://www.kaggle.com/datasets/olmatz/commonvoicefr)" for the French. 
+To create the dataset you should use dataset already create like "[Common Voice](https://www.kaggle.com/datasets/mozillaorg/common-voice)" for the English and "[CommonVoice-fr](https://www.kaggle.com/datasets/olmatz/commonvoicefr)" for the French.
 
-Now you can create a new dataset by converting them into spectrograms to have images with this kind of code:
+You can create a new dataset by converting them into spectrograms to have images with this kind of code:
 
 ```
 def spectrogram(audio_segment):
@@ -204,9 +212,9 @@ def spectrogram(audio_segment):
 
 We advise you to make a clear structure for your dataset for a better understanding.
 
-<img src="pictures/StructureTrain.jpg" style="height:200px"> 
+<img src="pictures/StructureTrain.jpg" style="height:200px">
 <br>
-<img src="pictures/StructureTest.jpg" style="height:200px"> 
+<img src="pictures/StructureTest.jpg" style="height:200px">
 
 #### Accessing the datasets
 
@@ -244,7 +252,7 @@ validation_generator = image_data_generator.flow_from_directory(
 
 <br>
 
-#### Evaluation generator 
+#### Evaluation generator
 
 After the training of the AI, you'll need the evaluate your model.
 
@@ -276,13 +284,13 @@ model = tf.keras.Sequential([
 
 #### Train the model
 
-Now that you have a model, you have to compile it and define the optimizer, the loss and the metrics, you always can modify them to improve your model.
+Now that you have a model, you have to compile it and define the optimizer composed of the loss and the metrics, you can always modify them to improve your model.
 
 ````
 model.compile(  
-	optimizer= RMSprop(lr=initial_learning_rate, clipvalue=2.0),  
-	loss='categorical_crossentropy',  
-	metrics=['accuracy']
+ optimizer= RMSprop(lr=initial_learning_rate, clipvalue=2.0),  
+ loss='categorical_crossentropy',  
+ metrics=['accuracy']
 )
 ````
 
@@ -305,7 +313,7 @@ def train_and_test(inmodel, epoch):
 ````
 
 ````
-#Training of the model for 10 epochs
+#Training the model for 10 epochs
 model = train_and_test(model, 10)
 ````
 
@@ -313,7 +321,7 @@ model = train_and_test(model, 10)
 
 #### Conversion in TensorflowLite and save
 
-By using a Raspberry PI, we need a tensorflow Lite model because it more light and efficient.
+On a Raspberry PI, the most efficient library to use the models is tensorflowLite because it is lighter.
 
 ````
 #save the model in TFLite
@@ -332,17 +340,14 @@ TFLite_convertion(model)
 <br>
 
 #### Initialisation of the Raspberry Pi
-<br>
 
-#### Initialisation of the Raspberry Pi
-
-The first thing you'll need for this step is to have the Raspberry Pi OS 64 bits.
+The first thing you'll need for this step is to have the Raspberry Pi with Raspbian OS 64 bits.
 
 Then, you just need to install Tensorflow Lite by following these 2 big steps:
 
 **a) Preparing your Raspberry Pi for Tensorflow**
 
-The first thing to do is to refresh our Raspberry Pi package list and upgrade any existing packages on your system.
+We begin with refreshing your Raspberry Pi packages list and upgrade any existing packages on your system.
 
 ````
 sudo apt update
@@ -356,19 +361,23 @@ echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] http
 ````
 
 Now, you'll need to add its GPG key into our keychains directory.
+
 ````
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null
 ````
 
-Perform an update of the package list by using the command below.
+Perform an update of the packages list by using the command below.
+
 ````
 sudo apt update
 ````
+
 <br>
 
-**b) Installing Tensorflow Lite to your Raspberry Pi**
+**b) Installing Tensorflow Lite on your Raspberry Pi**
 
 This will install the latest TensorFlow Lite runtime from Google’s package repository.
+
 ````
 sudo apt install python3-tflite-runtime
 ````
@@ -379,7 +388,8 @@ Now that we have installed the package, we can verify that TensorFlow Lite is no
 python3
 ````
 
-All we need to do is use the following line within the interface. All this line is doing is importing the interpreter library.
+The next line imports the interpreter library.
+
 ````
 from tflite_runtime.interpreter import Interpreter
 ````
@@ -390,13 +400,33 @@ If everything has worked so far, you should see no further messages within the c
 
 #### Connecting the LEDs
 
+To get the model output with lights as asked, you are
+going to plug LEDs on a breadboard connected to the raspberry pi GPIOs. you will need:
+
+- Female to male cables
+- LEDs at least one for each languages
+- resistors with a corresponding ohms reistance with the LEDs you took
+- a breadboard to connect everything
+
+follow the schema:
+<img src="./pictures/LED-to-Rasp.webp" style="height:300px">
+
+the cables should be plugged on the ground pin and the GPIOs
+
+the pins are ordered as follows:
+<img src="./pictures/pinout.png" style="height:300px">
 
 <br>
 
+#### Connect the AI with LEDs with python
 
-#### Connect the AI with LEDs
+To connect the code to the LEDs you should use
 
+`from gpiozero import LED`
 
+and then use `LED(GPIOpin you are using)`
+.on() <br>
+.off()
 
 <br>
 

@@ -20,7 +20,6 @@
   - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
     - [b. Milestones](#b-milestones)
-    - [d. Future work](#d-future-work)
   - [6. End Matter](#6-end-matter)
     - [a. References](#a-references)
     - [b. Acknowledgments](#b-acknowledgments)
@@ -171,14 +170,151 @@ Practice is essential in learning a language and the device can encourage this p
 
 ### b. Milestones
 
-- Finding an English and a french voice dataset on the Internet
-- Converting the audio data into a spectrogram to be compatible with the model
-- Creating a model able to analyze a spectrogram and determine the spoken language between French and English
-- Training the model with the labeled data
-- Testing the model with random data (and improve the model until the accuracy during the test reach 96%)
-- Inserting the model on the raspberry pi
 
-### d. Future work
+#### Creation of a dataset
+
+To create the dataset you should use dataset already create like "[Common Voice](https://www.kaggle.com/datasets/mozillaorg/common-voice)" for the English and "[CommonVoice-fr](https://www.kaggle.com/datasets/olmatz/commonvoicefr)" for the French. 
+
+Now you can create a new dataset by converting them into spectrograms to have images with this kind of code:
+
+    function to convert sound into spectrogramme
+
+We advise you to make a clear structure for your dataset for a better understanding.
+
+<img src="pictures/StructureTrain.jpg" style="height:200px"> 
+<br>
+<img src="pictures/StructureTest.jpg" style="height:200px"> 
+
+#### Accessing the datasets
+
+To make the datasets accessible for the model training, we first need to instantiate generators that iterate the datasets in a memory efficient way.
+
+An appropriate batch size is 128, which is large enough to help reduce over-fitting and maintains effective pattern formation.
+
+````
+validation_split=0.2
+
+#Normalization of the data
+image_data_generator = ImageDataGenerator(
+                              rescale=1./255,
+                              validation_split=validation_split)
+
+#Images for training
+train_generator = image_data_generator.flow_from_directory(
+                        "../input/train-spectrograme/",
+                        batch_size= 128, # Number of test per pass
+                        class_mode= 'categorical', # is 2D numpy array
+                        target_size= (128, 500), 
+                        color_mode= 'grayscale',
+                        subset= 'training')
+
+#Images for validation
+validation_generator = image_data_generator.flow_from_directory(
+                             "../input/train-spectrograme/",
+                             batch_size= 128,
+                             class_mode= 'categorical',
+                             target_size=(128, 500), 
+                             color_mode= 'grayscale',
+                             subset= 'validation')
+
+````
+
+<br>
+
+#### Evaluation generator 
+
+After the training of the AI, you'll need the evaluate your model.
+
+````
+image_data_generator = ImageDataGenerator(rescale=1./255)
+evaluation_generator = image_data_generator.flow_from_directory(
+                                        "../input/test-spectrograme/", 
+                                        batch_size=128,
+                                        class_mode='categorical',
+                                         target_size=(128, 500), 
+                                        color_mode='grayscale')
+````
+
+<br>
+
+#### Creation of a model
+
+For the creation of the model, you'll need to train and modify it a lot of time to find one which is efficient.
+
+````
+model = tf.keras.Sequential([
+    tf.keras.layers.Conv2D(16, (3, 3) , activation='relu', input_shape=[128, 500, 1]),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(units=2, activation='Softmax'),
+])
+````
+
+<br>
+
+#### Train the model
+
+Now that you have a model, you have to compile it and define the optimizer, the loss and the metrics, you always can modify them to improve your model.
+
+````
+model.compile(  
+	optimizer= RMSprop(lr=initial_learning_rate, clipvalue=2.0),  
+	loss='categorical_crossentropy',  
+	metrics=['accuracy']
+)
+````
+
+````
+def train_and_test(inmodel, epoch):
+    train, val, test = train_generator, validation_generator, evaluation_generator
+    
+    inmodel.fit(
+        train,
+        steps_per_epoch=40,
+        epochs=epoch,
+        validation_data=val,
+        validation_steps=int(len(glob('../input/train-spectrograme/*.png') + glob('../input/test-spectrograme/*.png')) * validation_split)
+    )
+
+    loss, acc = inmodel.evaluate(test, verbose=2)
+    print('Restored model, accuracy: {:5.2f}%'.format(100*acc))
+    
+    return(inmodel)
+````
+
+````
+#Training of the model for 10 epochs
+model = train_and_test(model, 10)
+````
+
+<br>
+
+#### Conversion in TensorflowLite and save
+
+By using a Raspberry PI, we need a tensorflow Lite model because it more light and efficient.
+
+````
+#save the model in TFLite
+
+def TFLite_convertion(inmodel):
+    converter = tf.lite.TFLiteConverter.from_keras_model(inmodel)
+    converter.optimizations = [tf.lite.Optimize.DEFAULT]
+    tflite_quant_model = converter.convert()
+    open("./quant_converted_model.tflite", "wb").write(tflite_quant_model)
+    !xxd -i ./quant_converted_model.tflite > model_data.cc
+    !ls -lh {"./"}
+    
+TFLite_convertion(model)
+````
+
+<br>
+
+#### Initialisation of the Raspberry Pi
+
+#### Connecting the LEDs
+
+#### Connect the AI with LEDs
+
+
 
 <br>
 

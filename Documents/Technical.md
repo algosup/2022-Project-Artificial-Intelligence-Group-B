@@ -20,7 +20,15 @@
   - [5. Work](#5-work)
     - [a. Work estimates and timelines](#a-work-estimates-and-timelines)
     - [b. Milestones](#b-milestones)
-    - [d. Future work](#d-future-work)
+      - [Creation of a dataset](#creation-of-a-dataset)
+      - [Accessing the datasets](#accessing-the-datasets)
+      - [Evaluation generator](#evaluation-generator)
+      - [Creation of a model](#creation-of-a-model)
+      - [Train the model](#train-the-model)
+      - [Conversion in TensorflowLite and save](#conversion-in-tensorflowlite-and-save)
+      - [Initialisation of the Raspberry Pi](#initialisation-of-the-raspberry-pi)
+      - [Connecting the LEDs](#connecting-the-leds)
+      - [Connect the AI with LEDs with python](#connect-the-ai-with-leds-with-python)
   - [6. End Matter](#6-end-matter)
     - [a. References](#a-references)
     - [b. Acknowledgments](#b-acknowledgments)
@@ -114,7 +122,7 @@ We will use Keras DataGenerator FlowFromDirectory to load all the images before 
 
 ## 3. Further Considerations
 
-### a. Security and privacy 
+### a. Security and privacy
 
 The device will not be connected to the Internet to do the recognition, it will be independent.
 The conversation data will be used for language recognition and never be stored.
@@ -171,14 +179,254 @@ Practice is essential in learning a language and the device can encourage this p
 
 ### b. Milestones
 
-- Finding an English and a french voice dataset on the Internet
-- Converting the audio data into a spectrogram to be compatible with the model
-- Creating a model able to analyze a spectrogram and determine the spoken language between French and English
-- Training the model with the labeled data
-- Testing the model with random data (and improve the model until the accuracy during the test reach 96%)
-- Inserting the model on the raspberry pi
+#### Creation of a dataset
 
-### d. Future work
+To create the dataset you should use dataset already create like "[Common Voice](https://www.kaggle.com/datasets/mozillaorg/common-voice)" for the English and "[CommonVoice-fr](https://www.kaggle.com/datasets/olmatz/commonvoicefr)" for the French.
+
+You can create a new dataset by converting them into spectrograms to have images with this kind of code:
+
+```
+def spectrogram(audio_segment):
+    image_width = 500
+    image_height = 128
+    # Compute Mel-scaled spectrogram image
+    hl = audio_segment.shape[0] // image_width
+    spec = librosa.feature.melspectrogram(audio_segment,
+                                     n_mels=image_height, 
+                                     hop_length=int(hl))
+
+    # Logarithmic amplitudes
+    image = librosa.core.power_to_db(spec)
+
+    # Convert to np matrix
+    image_np = np.asmatrix(image)
+
+    # Normalize and scale
+    image_np_scaled_temp = (image_np - np.min(image_np))
+
+    image_np_scaled = image_np_scaled_temp / np.max(image_np_scaled_temp)
+
+    return image_np_scaled[::-1, :image_width]
+    
+````
+
+We advise you to make a clear structure for your dataset for a better understanding.
+
+<img src="pictures/StructureTrain.jpg" style="height:200px">
+<br>
+<img src="pictures/StructureTest.jpg" style="height:200px">
+
+#### Accessing the datasets
+
+To make the datasets accessible for the model training, we first need to instantiate generators that iterate the datasets in a memory efficient way.
+
+An appropriate batch size is 128, which is large enough to help reduce over-fitting and maintains effective pattern formation.
+
+````
+validation_split=0.2
+
+#Normalization of the data
+image_data_generator = ImageDataGenerator(
+                              rescale=1./255,
+                              validation_split=validation_split)
+
+#Images for training
+train_generator = image_data_generator.flow_from_directory(
+                        "../input/train-spectrograme/",
+                        batch_size= 128, # Number of test per pass
+                        class_mode= 'categorical', # is 2D numpy array
+                        target_size= (128, 500), 
+                        color_mode= 'grayscale',
+                        subset= 'training')
+
+#Images for validation
+validation_generator = image_data_generator.flow_from_directory(
+                             "../input/train-spectrograme/",
+                             batch_size= 128,
+                             class_mode= 'categorical',
+                             target_size=(128, 500), 
+                             color_mode= 'grayscale',
+                             subset= 'validation')
+
+````
+
+<br>
+
+#### Evaluation generator
+
+After the training of the AI, you'll need the evaluate your model.
+
+````
+image_data_generator = ImageDataGenerator(rescale=1./255)
+evaluation_generator = image_data_generator.flow_from_directory(
+                                        "../input/test-spectrograme/", 
+                                        batch_size=128,
+                                        class_mode='categorical',
+                                         target_size=(128, 500), 
+                                        color_mode='grayscale')
+````
+
+<br>
+
+#### Creation of a model
+
+For the creation of the model, you'll need to train and modify it a lot of time to find one which is efficient.
+
+````
+model = tf.keras.Sequential([
+    tf.keras.layers.Conv2D(16, (3, 3) , activation='relu', input_shape=[128, 500, 1]),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(units=2, activation='Softmax'),
+])
+````
+
+<br>
+
+#### Train the model
+
+Now that you have a model, you have to compile it and define the optimizer composed of the loss and the metrics, you can always modify them to improve your model.
+
+````
+model.compile(  
+ optimizer= RMSprop(lr=initial_learning_rate, clipvalue=2.0),  
+ loss='categorical_crossentropy',  
+ metrics=['accuracy']
+)
+````
+
+````
+def train_and_test(inmodel, epoch):
+    train, val, test = train_generator, validation_generator, evaluation_generator
+    
+    inmodel.fit(
+        train,
+        steps_per_epoch=40,
+        epochs=epoch,
+        validation_data=val,
+        validation_steps=int(len(glob('../input/train-spectrograme/*.png') + glob('../input/test-spectrograme/*.png')) * validation_split)
+    )
+
+    loss, acc = inmodel.evaluate(test, verbose=2)
+    print('Restored model, accuracy: {:5.2f}%'.format(100*acc))
+    
+    return(inmodel)
+````
+
+````
+#Training the model for 10 epochs
+model = train_and_test(model, 10)
+````
+
+<br>
+
+#### Conversion in TensorflowLite and save
+
+On a Raspberry PI, the most efficient library to use the models is tensorflowLite because it is lighter.
+
+````
+#save the model in TFLite
+
+def TFLite_convertion(inmodel):
+    converter = tf.lite.TFLiteConverter.from_keras_model(inmodel)
+    converter.optimizations = [tf.lite.Optimize.DEFAULT]
+    tflite_quant_model = converter.convert()
+    open("./quant_converted_model.tflite", "wb").write(tflite_quant_model)
+    !xxd -i ./quant_converted_model.tflite > model_data.cc
+    !ls -lh {"./"}
+    
+TFLite_convertion(model)
+````
+
+<br>
+
+#### Initialisation of the Raspberry Pi
+
+The first thing you'll need for this step is to have the Raspberry Pi with Raspbian OS 64 bits.
+
+Then, you just need to install Tensorflow Lite by following these 2 big steps:
+
+**a) Preparing your Raspberry Pi for Tensorflow**
+
+We begin with refreshing your Raspberry Pi packages list and upgrade any existing packages on your system.
+
+````
+sudo apt update
+sudo apt upgrade -y
+````
+
+Once the update completes, we will need to add the Google package repository containing TensorFlow Lite to your Raspberry Pi.
+
+````
+echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+````
+
+Now, you'll need to add its GPG key into our keychains directory.
+
+````
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null
+````
+
+Perform an update of the packages list by using the command below.
+
+````
+sudo apt update
+````
+
+<br>
+
+**b) Installing Tensorflow Lite on your Raspberry Pi**
+
+This will install the latest TensorFlow Lite runtime from Google’s package repository.
+
+````
+sudo apt install python3-tflite-runtime
+````
+
+Now that we have installed the package, we can verify that TensorFlow Lite is now working by importing it.
+
+````
+python3
+````
+
+The next line imports the interpreter library.
+
+````
+from tflite_runtime.interpreter import Interpreter
+````
+
+If everything has worked so far, you should see no further messages within the command line. You can now run your TensorFlow Lite models on your Raspberry Pi.
+
+<br>
+
+#### Connecting the LEDs
+
+To get the model output with lights as asked, you are
+going to plug LEDs on a breadboard connected to the raspberry pi GPIOs. you will need:
+
+- Female to male cables
+- LEDs at least one for each languages
+- resistors with a corresponding ohms reistance with the LEDs you took
+- a breadboard to connect everything
+
+follow the schema:
+<img src="./pictures/LED-to-Rasp.webp" style="height:300px">
+
+the cables should be plugged on the ground pin and the GPIOs
+
+the pins are ordered as follows:
+<img src="./pictures/pinout.png" style="height:300px">
+
+<br>
+
+#### Connect the AI with LEDs with python
+
+To connect the code to the LEDs you should use
+
+`from gpiozero import LED`
+
+and then use `LED(GPIOpin you are using)`
+.on() <br>
+.off()
 
 <br>
 

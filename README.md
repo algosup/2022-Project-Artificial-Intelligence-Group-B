@@ -18,7 +18,7 @@ This would be done by using Deep Learning to tell the languages apart.
 
 [Functional Specifications](Documents/Functional.md) <br>
 [Technical Specifications](Documents/Technical.md) <br>
-[Software Architecture Design Choices](Documents/SoftwareArchitecture.jpg) <br>
+[Software Architecture Design Choices](Documents/SoftwareArchitecture.jpeg) <br>
 [Individual Functional Specifications](Documents/Personal%20functionals/)
 
 ## Usage

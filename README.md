@@ -19,7 +19,8 @@ This would be done by using Deep Learning to tell the languages apart.
 [Functional Specifications](Documents/Functional.md) <br>
 [Technical Specifications](Documents/Technical.md) <br>
 [Software Architecture Design Choices](Documents/SoftwareArchitecture.jpeg) <br>
-[Individual Functional Specifications](Documents/Personal%20functionals/)
+[Individual Functional Specifications](Documents/Personal%20functionals/) <br>
+[Project Execution Plan](https://trello.com/invite/b/J0aQL5A5/60d4e8318745b13c99a16d7972631cad/algosupproject5b)
 
 ## Usage
 Soon™

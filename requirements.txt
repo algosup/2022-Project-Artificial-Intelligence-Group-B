@@ -1,5 +1,13 @@
 # Install the required libraries for training using
 # pip install -r requirements.txt
 
+gpiozero
+io
+librosa
 matplotlib
+numpy
+Pillow
+scipy
+selenium
+sounddevice
 tensorflow
